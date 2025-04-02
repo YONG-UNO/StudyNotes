@@ -210,6 +210,7 @@ if M <= 1:
     print('No')
 else:
     # 从 2 开始到该数的平方根进行遍历
+    # 当M=2时，range（2，2），是一个空范围YES，循环不会执行，输出YES
     for i in range(2, int(M**0.5) + 1):
         # 如果该数能被 2 到其平方根之间的某个数整除
         if M % i == 0:
@@ -217,4 +218,78 @@ else:
             break
     else:
         print('Yes')
+```
+
+# 4-4 判断素数
+>本题的目标很简单，就是判断一个给定的正整数是否素数。
+
+## 输入格式：
+输入在第一行给出一个正整数N（≤ 10），随后N行，每行给出一个小于2^31的需要判断的正整数。
+
+## 输出格式：
+对每个需要判断的正整数，如果它是素数，则在一行中输出Yes，否则输出No。
+
+## 输入样例：
+>2
+11
+111
+
+## 输出样例：
+>Yes
+No
+
+## 答案
+>全部输入完后，再一起判断
+```bash
+#定义判断素数函数
+def is_prime(num):
+    if num <= 1:
+        return False
+    else:
+        for i in range(2, int(num ** 0.5)+1):
+            if num % i == 0:
+                return False
+                break
+        else:
+            return True
+
+#读取需要判断的数的个数
+N = int(input())
+results = []
+for i in range(N):
+    #逐行读取需要判断的数字
+    num = int(input())
+    if is_prime(num):
+        results.append("Yes")
+    else:
+        results.append("No")
+
+#最后一起输出判断结果
+for result in results:
+    print(result)
+```
+>输入一个数字判断一个数字
+```bash
+#定义判断素数函数
+def is_prime(num):
+    if num <= 1:
+        return False
+    else:
+        for i in range(2, int(num**0.5)+1):
+            if num % i == 0:
+                return False
+                break
+        else:
+            return True
+
+#需要判断的素数个数
+N = int(input())
+
+#逐个判断是否为素数并依次返回结果
+for i in range(N):
+    num = int(input())
+    if is_prime(num):
+        print("Yes")
+    else:
+        print("No")
 ```
