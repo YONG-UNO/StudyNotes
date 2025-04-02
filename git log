@@ -1,0 +1,35 @@
+[33mcommit c402164694ac48daf87b8198b06e9a47c2f3a4c1[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m)[m
+Author: GG-GIRL <2903964879@qq.com>
+Date:   Wed Apr 2 12:58:55 2025 +0800
+
+    add file test.c
+
+[33mcommit 0d4bdfc645fe11908495a4d59d3985711adf265c[m
+Author: GG-GIRL <2903964879@qq.com>
+Date:   Tue Apr 1 17:15:17 2025 +0800
+
+    add 1.txt
+
+[33mcommit 88dc506f6ff02ec1d971de49a37ff461db5c5256[m
+Author: GG-GIRL <2903964879@qq.com>
+Date:   Tue Apr 1 17:12:10 2025 +0800
+
+    rm min.c
+
+[33mcommit 18cfb54bafa1172a90e60066fc24e24adf70bdda[m
+Author: GG-GIRL <2903964879@qq.com>
+Date:   Tue Apr 1 16:44:10 2025 +0800
+
+    rm test.c
+
+[33mcommit 850904b44e03ae1bc166f832ccb1ce2c26fa81c4[m
+Author: GG-GIRL <2903964879@qq.com>
+Date:   Tue Apr 1 16:36:19 2025 +0800
+
+    add min.c
+
+[33mcommit e6abb2107718102b7475cf3e93c164dd0979f182[m
+Author: GG-GIRL <2903964879@qq.com>
+Date:   Tue Apr 1 15:25:06 2025 +0800
+
+    test add new file " test.c12 "
