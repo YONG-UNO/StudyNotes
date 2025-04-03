@@ -105,11 +105,11 @@ git status
 >4.nothing to commit:当工作区和暂存区与最新提交状态一致，没有任何未跟踪、未暂存或待提交的更改时
 
 >5.当本地分支和远程分支有不同的提交历史时，会提示分支领先或落后
-     >
+```bash
      5.1Your branch is ahead of:这表明本地 master 分支比远程 master 分支多一个提交，可以使用 git push 将本地提交推送到远程仓库。
      
      5.2Your branch is behind:此提示说明本地 master 分支比远程 master 分支少一个提交，可以使用 git pull 来更新本地分支。
-
+```
 
 ## 删除文件: git rm
 ```bash
