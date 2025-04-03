@@ -165,10 +165,8 @@ static void MX_GPIO_Init(void)
 ### 3.2 启动PWM输出
 `使用HAL_TIM_PWM_Start(&htim3, TIM_CHANNEL_1)启动定时器 3 的通道 1 的 PWM 输出。`
 ### 3.3 呼吸灯逻辑
-`
-1.定义一个变量pulse_value用于存储 PWM 脉冲宽度，direction用于表示亮度变化的方向（增加或降低）。
+>1.定义一个变量pulse_value用于存储 PWM 脉冲宽度，direction用于表示亮度变化的方向（增加或降低）。
 2.在while(1)循环中，根据direction的值增加或减少pulse_value。
 3.当pulse_value达到最大值（999）时，将direction设置为 0，表示亮度开始降低；当pulse_value达到最小值（0）时，将direction设置为 1，表示亮度开始增加。
 4.使用__HAL_TIM_SET_COMPARE(&htim3, TIM_CHANNEL_1, pulse_value)设置 PWM 的脉冲宽度，从而改变 LED 的亮度。
 5.通过HAL_Delay(1)延时 1ms，控制呼吸灯的变化速度。
-`

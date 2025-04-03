@@ -95,9 +95,12 @@ git reset --hard HEAD~3
 git status
 ```
 >查看当前仓库状态
+
 >1.untracked files:当你新创建了文件，但还没有使用git add将其添加到暂存区时
+
 >2.modified(red):文件已经被修改，但修改内容还未添加到暂存区
-3.modified(green):使用git add命令将文件的修改添加到暂存区后，这些文件会处于已暂存待提交状态
+
+>3.modified(green):使用git add命令将文件的修改添加到暂存区后，这些文件会处于已暂存待提交状态
 4.nothing to commit:当工作区和暂存区与最新提交状态一致，没有任何未跟踪、未暂存或待提交的更改时
 5.当本地分支和远程分支有不同的提交历史时，会提示分支领先或落后
      5.1Your branch is ahead of:这表明本地 master 分支比远程 master 分支多一个提交，可以使用 git push 将本地提交推送到远程仓库。
