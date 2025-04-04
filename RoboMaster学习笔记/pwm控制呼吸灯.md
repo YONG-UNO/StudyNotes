@@ -1,4 +1,4 @@
-# 初学HAL库|利用PWM实现LED呼吸灯
+# 利用PWM实现LED呼吸灯
 >作者：丁勇
 ## 目录
 - 一、PWM是什么？
@@ -95,29 +95,90 @@ $$
 
 #### 3.3 Timer配置
 1. 在Timers中点击“TIM2”，选择时钟资源“Clock Source”为内部时钟“Internal Clock”。
+![](https://i-blog.csdnimg.cn/direct/f1f4e44ffb3847788e66c1b14c50c12e.png)
+
 2. 选择通道1。
-3. 根据公式计算，取PSC为7199，取ARR为199，以得到20ms的定时时间。在PSC中填入7199，在ARR中填入199（捕获比较寄存器CCR的初始值为0，无需更改）。
+![](https://i-blog.csdnimg.cn/direct/b4fecce34dd94be9b469cd8923244fb3.png)
+
+3. 根据公式计算，取PSC为7199，取ARR为199
+![](https://i-blog.csdnimg.cn/direct/36e5714e3ff549e3963369ae0719c515.png)
+
+以得到20ms的定时时间。在PSC中填入7199，在ARR中填入199（捕获比较寄存器CCR的初始值为0，无需更改）。
+![](https://i-blog.csdnimg.cn/direct/cf6f194eb19a4bcb9d198b6a3b052863.png)
+
 4. 点击“NVIC Settings”，勾选“Enabled”使能定时器2。
+![](https://i-blog.csdnimg.cn/direct/bb1777d568894af7abceb94c1e369947.png)
+
 #### 3.4 时钟树设置（Clock Configuration）
-点击“Clock Configuration”，将框中的“8”修改为“72”，按下回车键，在弹出的框中选择“OK”。
+点击“Clock Configuration”，将框中的“8”修改为“72”，**按下回车键**
+![](https://i-blog.csdnimg.cn/direct/652cb9319f414fc0aeb9e0832fc75323.png)
+
+在弹出的框中选择“OK”。
+![](https://i-blog.csdnimg.cn/direct/a1d7952d899d4e209caf6177d2f2211e.png)
+
 #### 3.5 Project Manager配置
 1. 输入项目名称“PWM”，将“EWARM”改为“MDK-ARM”。
+![](https://i-blog.csdnimg.cn/direct/f35ff84cbe014feb94cf963c5e166c06.png)
+
 2. 将版本更改为V5。
-3. 点击“Code Generator”，勾选第二个框，然后点击“GENERATE CODE”生成代码，点击“Open Project”打开keil5。
+![](https://i-blog.csdnimg.cn/direct/a6dfd982927e4df083740d80efe1f801.png)
+
+3. 点击“Code Generator”，勾选第二个框，然后点击“GENERATE CODE”生成代码
+![](https://i-blog.csdnimg.cn/direct/737a40544a044bd4b49fbbc1f17bf8da.png)
+
+
+点击“Open Project”打开keil5。
+![](https://i-blog.csdnimg.cn/direct/3411ea529d28420b98e655dd55e375cd.png)
+
 ### 4. 代码编写
 #### 4.1 打开main文件
 打开“PWM”文件夹，再打开其子文件夹“Application/User”，双击“main.c”开始编写程序。
+![](https://i-blog.csdnimg.cn/direct/0a7b73070e6e4f39beafdd32ac4723ce.png)
+
 #### 4.2 将程序设置为自启动模式
 1. 点击菜单栏中的“魔术棒”。
+![](https://i-blog.csdnimg.cn/direct/92133563c8c24c45b6684efde2650438.png)
+
 2. 点击“Debug”，然后点击“Settings”。
+![](https://i-blog.csdnimg.cn/direct/8ce1a9b999894d9baef9b621ed28cbe0.png)
+
 3. 选择“ST-Link Debugger”，点击“Flash Download”，勾选选项“Reset and Run”，再点击“确定”。
+![](https://i-blog.csdnimg.cn/direct/d7943873b41f438ba7c0526e4554c156.png)
+
 #### 4.3 代码部分
-1. 在“ /* USER CODE BEGIN PTD */ ”和 “ /* USER CODE END PTD */ ”之间添加代码“typedef unsigned char u8;”。
-2. 在“ /* USER CODE BEGIN PV */ ”和“ /* USER CODE END PV */ ”之间添加“u8 DutyStep[] = {0,40,80,120,160,200,160,80,40,0},DutyStep_Index;”。
-3. 在“ /* USER CODE BEGIN 2 */ ”和“ /* USER CODE END 2 */ ”之间添加“HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);”。
-4. 在“ /* USER CODE BEGIN 3 */ ”和“ /* USER CODE END 3 */ ”间添加代码：
+1. 在“ /* USER CODE BEGIN PTD */ ”和 “ /* USER CODE END PTD */ ”之间添加代码“typedef unsigned char u8;”，将“unsigned char”修改为“u8”，用于方便后续书写。（不修改也行，如果不修改的话要把本文代码中的“u8”写成“unsigned char”）
 ```c
+/* Private typedef -----------------------------------------------------------*/
+/* USER CODE BEGIN PTD */
+typedef unsigned char u8;
+/* USER CODE END PTD */
+```
+
+
+2. 以数组的形式定义控制LED灯亮度的变量，使LED亮度变化为：暗 -> 亮 -> 暗；再定义用于锁定数组序列号的变量标志。在“ /* USER CODE BEGIN PV */ ”和“ /* USER CODE END PV */ ”之间添加“u8 DutyStep[] = {0,40,80,120,160,200,160,80,40,0},DutyStep_Index;”
+```c
+/* USER CODE BEGIN PV */
+u8 DutyStep[] = {0,40,80,120,160,200,160,80,40,0},DutyStep_Index;
+/* USER CODE END PV */
+```
+
+3. 开启定时器2的通道1输出PWM信号，在“ /* USER CODE BEGIN 2 */ ”和“ /* USER CODE END 2 */ ”之间添加“HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);”
+```c
+/* USER CODE BEGIN 2 */
+HAL_TIM_PWM_Start(&htim2,TIM_CHANNEL_1);
+/* USER CODE END 2 */
+```
+
+4. 每隔200ms（HAL_Delay）修改一次占空比，在“ /* USER CODE BEGIN 3 */ ”和“ /* USER CODE END 3 */ ”间添加代码。
+
+
+```c
+/* USER CODE BEGIN 3 */
 for(DutyStep_Index = 0;DutyStep_Index <= 9;DutyStep_Index++){
     __HAL_TIM_SET_COMPARE(&htim2,TIM_CHANNEL_1,DutyStep[DutyStep_Index]);
     HAL_Delay(200);
+/* USER CODE END 3 */
 }
+```
+## 总结
+以上就是PWM控制LED双向呼吸灯的程序，通过学习，我学会了定时器的配置，理解了STM32和51单片机的相似点和不同点，STM32的HAL库可以用CubeMx进行初始化参数的配置，配置完后将会自动帮你生成代码，很方便，CubeMx有单片机的框图，可以知道哪些引脚被使用、用于什么功能，更直观。
