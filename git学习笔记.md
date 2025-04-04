@@ -24,7 +24,7 @@ git add test.c
 #使用git commit -m 命令将暂存区的内容提交到本地仓库,同时添加一条简短的提交说明
 git commit -m "add new file test.c"
 ```
-> git add<文件名>,将文件添加到暂存区
+> git add <文件名>,将文件添加到暂存区
 git add .会将当前目录下所有修改和新增文件都添加到暂存区
 git add --all添加所有文件的同时,还包含一个删除操作
 
