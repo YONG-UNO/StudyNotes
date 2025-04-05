@@ -89,7 +89,7 @@ $$
 #### 3.2 System Core配置
 1. 点击“SYS”，将Debug选择为“Serial Wire”，其余保持默认设置。
 
-![](https://i-blog.csdnimg.cn/direct/6342c1ed85ff43e78d4109cc4e32df8a.png)
+![图片](https://i-blog.csdnimg.cn/direct/6342c1ed85ff43e78d4109cc4e32df8a.png)
 
 2. 点击“RCC”，将“High Speed Clock（HSE）”选择为“Crystal/Ceramic Resonator”，其余保持默认设置。
 ![](https://i-blog.csdnimg.cn/direct/a6eb7ce6d76f4b998d5c0b095aa9e68d.png)
