@@ -41,7 +41,7 @@ LED灯作为半导体器件，对电流变化响应迅速。当PWM信号为高�
 占空比从0%开始，所以写入捕获/比较寄存器CCR的初值为0。之后在while循环中调用宏函数`__HAL_TIM_SET_COMPARE`修改CCR的内容，从0开始，逐渐增加到200（依据公式`Duty = （CCR）/（ARR + 1）`可得CCR为200 ），步进值为40。
 ## 占空比相关计算的原理及过程
 
-要理解占空比、捕获/比较寄存器值（CCR）和自动重装载寄存器值（ARR）之间是如何计算的，我们先从占空比的定义入手，然后结合公式来分析为什么这里 CCR 能从计算得出。
+要理解占空比、捕获/比较寄存器值（CCR:Crystal/Ceramic Resonator）和自动重装载寄存器值（ARR:Auto-Reload Register）之间是如何计算的，我们先从占空比的定义入手，然后结合公式来分析为什么这里 CCR 能从计算得出。
 
 ## 占空比的定义
 占空比（Duty Cycle）指的是在一个脉冲周期内，高电平持续时间与整个周期时间的比值，通常用百分比表示。在PWM（脉冲宽度调制）信号中，占空比决定了信号的平均功率，广泛应用于电机调速、灯光亮度控制等场景。
@@ -88,10 +88,14 @@ $$
 
 #### 3.2 System Core配置
 1. 点击“SYS”，将Debug选择为“Serial Wire”，其余保持默认设置。
+
 ![](https://i-blog.csdnimg.cn/direct/6342c1ed85ff43e78d4109cc4e32df8a.png)
 
 2. 点击“RCC”，将“High Speed Clock（HSE）”选择为“Crystal/Ceramic Resonator”，其余保持默认设置。
 ![](https://i-blog.csdnimg.cn/direct/a6eb7ce6d76f4b998d5c0b095aa9e68d.png)
+##### 2.2 配置时钟
+>进入**RCC**选项卡,外部高速时钟(HSE)选择**crystal/cetamic resonator**(晶体谐振器/陶瓷谐振器)
+`Bypass Clock Source(旁路时钟):不使用外部晶体与芯片内部时钟驱动组件配合产生时钟信号,而是直接从外界导入时钟信号,就好像芯片内部的时钟驱动组件被旁路了一样`
 
 #### 3.3 Timer配置
 1. 在Timers中点击“TIM2”，选择时钟资源“Clock Source”为内部时钟“Internal Clock”。
