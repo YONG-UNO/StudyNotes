@@ -258,5 +258,96 @@ int main(){
   //通过点运算符访问成员
   printf("Name: %s\n",person1.name);
   printf("Age: %d\n",person1.age);
+  printf("Height: %.2f\n",person1.height);
+
+  //修改结构体成员的值
+  person1.age = 31;
+  printf("Age: %d\n", person1.age);
+
+  retrun 0;
 }
 ```
+- b.使用指针(指向符)(->)操作结构体成员
+**语法**:结构体指针->成员名
+```c
+//定义结构体
+struct Person {
+  char name[50];
+  int age;
+  float height;
+}; //;不要丢
+
+int main(){
+  //定义一个结构体变量并初始化
+  struct Person person1 = {"张三",25,1.75f};
+
+  //定义指向结构体的指针
+  struct Person *personPtr = &person1;
+
+  //通过箭头运算符访问成员
+  printf("Name: %s\n",personPtr->name);
+  printf("Age: %d\n",personPtr->age);
+  printf("Height: %.2f\n",personPtr->height);
+
+  \\修改结构体成员的值
+  personPtr->age = 26;
+  printf("Age: %d\n",personPtr->height);
+
+  return 0;
+}
+```
+
+>**题目**
+对结构体变量stu1中成员age的非法引用是(B)
+```c
+struct student
+{
+  int age;
+  int num;
+}stu1,*p;
+p = &stu1;
+
+a.stu1.age
+b.student.age
+c.p->age
+d.(*p).age
+```
+
+## 2.字符串的赋值
+**正确**赋值
+```c
+char str[6] = "hello";
+char str[] = "hello";
+char str[6] = {"h","e","l","l","o","\0"};  //5个字符+1个结束符
+char *str = "hello";  //定义字符指针,指向字符串"hello",字符串常量不可修改
+```
+**错误**赋值
+```c
+char str[5] = "hello";  //少了结束符
+char str[6];str = "hello";  //数组名是一个常量指针，它指向数组的首地址，不能被重新赋值
+```
+
+## 3.预处理 #define
+```c
+#include <stdio.h>
+#define ADD1(a,b) a+b
+#define ADD2(a,b) (a+b)
+
+int main()
+{
+  int a = 10;
+  int b = 15;
+  int ret1 = ADD1(a,b)*4;
+  int ret2 = ADD(a,b)*4;
+  printf("ret1的结果是: %d\n",ret1);
+  printf("ret的结果是: %d\n",ret2);
+  
+  return 0;
+}
+
+//answer:10 + 15*4/ (10 + 15)*4
+//if add():((a)+(b))more perfect ,because a could be an expression
+```
+> - 1.#define 是 C 语言中的预处理指令，用于宏定义。它的作用是在编译预处理阶段，将代码中出现的宏名替换为对应的宏体。
+> - 2.#define ADD1(a,b) a+b：定义了一个名为 ADD1 的宏，它接受两个参数 a 和 b，宏体为 a+b。在预处理阶段，代码中出现的 ADD1(x,y) 形式的表达式，会被直接替换为 x+y 的形式。
+
