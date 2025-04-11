@@ -239,3 +239,27 @@ def add(num1,num2):
 print(add(1+2)) #返回None
 ```
 
+## enumerate()函数  (枚举)
+>在 Python 中，enumerate() 是一个内置函数，用于将一个可迭代对象（如列表、元组、字符串等）组合为一个索引序列，同时列出数据和数据下标。它返回的是一个枚举对象，一般会通过 for 循环来遍历使用，语法格式如下：
+```python
+enumerate(iterable, start=0)
+```
+>其中，iterable 是必需参数，表示要遍历的可迭代对象；start 是可选参数，表示索引的起始值，默认值为 0。
+以下是一些示例代码，展示了 enumerate() 的用法：
+```python
+# 示例1：遍历列表并获取元素和索引
+fruits = ['apple', 'banana', 'cherry']
+for index, fruit in enumerate(fruits):
+    print(f"索引 {index} 对应的水果是 {fruit}")
+
+# 示例2：指定索引起始值为1
+numbers = [10, 20, 30]
+for index, num in enumerate(numbers, start=1):
+    print(f"第 {index} 个数字是 {num}")
+
+# 示例3：遍历字符串并获取字符和索引
+s = "hello"
+for index, char in enumerate(s):
+    print(f"索引 {index} 对应的字符是 {char}")
+```
+
