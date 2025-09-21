@@ -7,7 +7,7 @@
 
 2. 输出方程（描述输出与状态的关系）：
    $$y = \mathbf{C}\mathbf{x} + \mathbf{D}u$$
-![弹簧阻尼实例](AutomaticControl/Advance/images/1.png)
+![弹簧阻尼实例](https://github.com/YONG-UNO/StudyNotes/blob/100c9cd74bc7dc980197134a604260f1c52b069d/AutomaticControl/Advance/images/1.png)
 ```angular2html
 输入:U(x) = f(t)
 ```
