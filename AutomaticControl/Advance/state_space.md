@@ -11,3 +11,11 @@
 ```angular2html
 输入:U(x) = f(t)
 ```
+
+$$
+\begin{matrix}
+1 & 2 & 3 \\
+4 & 5 & 6 \\
+7 & 8 & 9
+\end{matrix} \tag{1}
+$$
