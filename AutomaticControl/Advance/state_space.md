@@ -1,7 +1,7 @@
 # Advanced控制理论
 状态-空间表达 State-Space Representation
 
-![弹簧阻尼实例](AutomaticControl/Advance/images/1.png)
+![弹簧阻尼实例](StudyNotes/AutomaticControl/Advance/images/1.png)
 ```angular2html
 输入:U(x) = f(t)
 ```
