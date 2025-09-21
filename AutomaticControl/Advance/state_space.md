@@ -1,11 +1,12 @@
 # Advanced控制理论
-状态-空间表达 State-Space Representation
-$$
-\begin{Bmatrix}
+状态-空间表达 State-Space Representation$$
+\left\{
+\begin{matrix}
 1 & 2 & 3 \\
 4 & 5 & 6 \\
 7 & 8 & 9
-\end{Bmatrix} \tag{1}
+\end{matrix}
+\right\} \tag{1}
 $$
 ![弹簧阻尼实例](AutomaticControl/Advance/images/1.png)
 ```angular2html
