@@ -263,3 +263,7 @@ for index, char in enumerate(s):
     print(f"索引 {index} 对应的字符是 {char}")
 ```
 
+## when yuo can't install pipy package because of network error
+```python
+pip install xxx -i https://pypi.tuna.tsinghua.edu.cn/simple
+```
